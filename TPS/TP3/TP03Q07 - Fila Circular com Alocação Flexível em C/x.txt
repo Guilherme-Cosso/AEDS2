@@ -1,0 +1,174 @@
+//Prototipo
+//prototipos da "Main"
+//Ler Arquivo ...
+void leeArq(Jogador jogador[]);
+void separarDados(char dados[], int index, Jogador jogador[]);
+void replace(char string[]);
+// Ler Pub.in
+void leeIds(Jogador j[]);
+//Prototipos da Lista
+void start();
+Celula *novaCelula();
+void mostrar();
+//Iserir
+void inserirInicio(Jogador j);
+void inserirFim(Jogador j);
+void inserir(Jogador j, int pos);
+//remover
+Jogador removerInicio();
+Jogador removerFim();
+Jogador remover(int pos);
+//imprimir
+void imprimir(Jogador jogador[]);
+
+
+
+
+// Leitura de Arquivo
+void leeArq(Jogador jogador[])
+{
+   FILE *arq = fopen("./players.csv", "r");
+   int i = 0;
+   char dados[200];
+   fgets(dados, 200, arq);
+   while (i < 3922)
+   {
+      fgets(dados, 200, arq);
+      replace(dados);
+      separarDados(dados, i, jogador);
+      i++;
+   }
+}
+
+void replace(char dados[])
+{
+   char aux[] = "nao informado";
+   char nString[200];
+   int i = 0;
+   int j = 0;
+
+   while (dados[i] != '\0')
+   {
+      nString[j++] = dados[i++];
+      if (dados[i - 1] == ',' && (dados[i] == ',' || dados[i] == '\n'))
+      {
+         for (int k = 0; k < strlen(aux); k++)
+            nString[j++] = aux[k];
+      }
+   }
+   nString[j] = '\0';
+   strcpy(dados, nString);
+   //printf("%s", dados);
+}
+
+void separarDados(char dados[], int index, Jogador jogador[])
+{
+   char string[70];
+   int j = 0,
+       k = 0;
+
+   for (int i = 0; i < 8; i++)
+   {
+      while (dados[k] != ',' && dados[k] != '\n')
+      {
+         string[j++] = dados[k++];
+      }
+      string[j] = '\0';
+
+      switch (i)
+      {
+      case 0:
+         jogador[index].id = atoi(string);
+         break;
+      case 1:
+         strcpy(jogador[index].nome, string);
+         break;
+      case 2:
+         jogador[index].altura = atoi(string);
+         break;
+      case 3:
+         jogador[index].peso = atoi(string);
+         break;
+      case 4:
+         strcpy(jogador[index].universidade, string);
+         break;
+      case 5:
+         jogador[index].anoNascimento = atoi(string);
+         break;
+      case 6:
+         strcpy(jogador[index].cidadeNascimento, string);
+         break;
+      case 7:
+         strcpy(jogador[index].estadoNascimento, string);
+         break;
+      }
+      k++;
+      j = 0;
+   }
+}
+// Leitura de Ids
+void leeIds(Jogador j[])
+{
+   char *entrada = (char *)malloc(sizeof(char) * 70);
+   scanf(" %s", entrada);
+   while (!(strcmp(entrada, "FIM") == 0))
+   {
+      inserirFim(j[atoi(entrada)]);
+      scanf(" %s", entrada);
+   }
+   free(entrada);
+}
+
+
+/**
+ * Insere elemento na fila (politica FIFO).
+ * @param x int Elemento a inserir.
+ */
+/*
+void inserir(Jogador j) {
+   ->prox = novaCelula(j);
+   ultimo = ultimo->prox;
+}
+
+*/
+/**
+ * Remove elemento da fila (politica FIFO).
+ * @return Elemento removido.
+ */
+/*
+int remover() {
+   if (primeiro == ultimo) {
+      errx(1, "Erro ao remover!");
+   }
+   Celula* tmp = primeiro;
+   primeiro = primeiro->prox;
+   int resp = primeiro->elemento;
+   tmp->prox = NULL;
+   free(tmp);
+   tmp = NULL;
+   return resp;
+}
+*/
+
+/**
+ * Mostra os elementos separados por espacos.
+ */
+/*
+void mostrar() {
+   Celula* i;
+   printf("[ ");
+   for (i = primeiro->prox; i != NULL; i = i->prox) {
+      printf("%d ", i->elemento);
+   }
+   printf("] \n");
+}
+
+
+void imprimir(Jogador jogador[])
+{
+   for (CelulaDupla *i = primeiro; i != NULL; i = i->prox)
+   {
+      printf("[%d ## %s ## %d ## %d ## %d ## %s ## %s ## %s]\n", i->j.id, i->j.nome, i->j.altura, i->j.peso, i->j.anoNascimento, i->j.universidade, i->j.cidadeNascimento, i->j.estadoNascimento);
+   }
+}
+*/

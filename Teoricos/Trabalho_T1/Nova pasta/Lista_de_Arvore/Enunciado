@@ -1,0 +1,3 @@
+Faça uma Lista de pesos que possui um ponteiro em cada elemnto da lista para uma arvore de Nomes
+A funçao deve receber o nome de pessoa e o peso logo dps procurar inseri o peso da peso na lista 
+e o nome da mesma em uma arvore referente ao seu peso.

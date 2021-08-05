@@ -1,0 +1,4 @@
+A linha marcada pode ser substituída pelo código abaixo?
+        ultimo = ultimo.prox.ant.prox.ant.prox
+
+Sim.

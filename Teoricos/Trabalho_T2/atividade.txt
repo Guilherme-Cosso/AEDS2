@@ -1,0 +1,18 @@
+Slide A ok Nada
+Slide B ok FEITO
+SLIDE C ok Nada
+SLIDE D ok Nada
+SLIDE E ok Feito
+SLIDE F ok Feito
+Slide G ok Feito
+Slide h ok FEITO
+SLIDE i ok Nada
+SLIDE j ok Nada
+SLIDE k ok Nada
+SLIDE l ok Nada
+Slide M ok Feito
+Slide n ok Nada
+Slide o ok Feito
+
+
+

@@ -1,0 +1,30 @@
+	Melhor Caso
+n-4 + n-7+ lg(n) + lg(n-1) + 2n²-2n+1
+2n² -10 + lg(n) + lg(n-1)
+2n² -10 + lg(n²-n).
+	Pior Caso
+3n-12 + n-7+ lg(n) + lg(n-1) + 2n²-2n+3
+2n² + 2n - 16 + lg(n²-n).
+
+Sabemos que o custo Θ(n²) Logo podemos afirmar que O(n²*lg(n)) 	
+esta correto pois é p Limite superior e o e Ω(lg n) tbm esta
+correto pois se trata do limite inferior.
+
+2) Q2.java
+
+
+
+3)
+public void print(int[] vector){
+	int aux = vector.lentgh
+	int pos = 1;
+	while(aux>pos){
+		pos=pos*2+1;
+	}
+	pos=(pos-1)/2
+
+	 System.out.println(vector[pos]);
+}
+
+4) 
+

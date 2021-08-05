@@ -1,0 +1,118 @@
+
+/*
+
+
+
+	/**
+	 * Remove um peso da primeira posicao da lista.
+    * @return resp int peso a ser removido.
+	 * @throws Exception Se a lista nao contiver pesos.
+	 */
+	public int removerInicio() throws Exception {
+		if (primeiro == ultimo) {
+			throw new Exception("Erro ao remover (vazia)!");
+		}
+
+      CelulaList tmp = primeiro;
+		primeiro = primeiro.prox;
+		int resp = primeiro.peso;
+      tmp.prox = primeiro.ant = null;
+      tmp = null;
+		return resp;
+	}
+
+
+	/**
+	 * Remove um peso da ultima posicao da lista.
+    * @return resp int peso a ser removido.
+	 * @throws Exception Se a lista nao contiver pesos.
+	 */
+	public int removerFim() throws Exception {
+		if (primeiro == ultimo) {
+			throw new Exception("Erro ao remover (vazia)!");
+		} 
+      int resp = ultimo.peso;
+      ultimo = ultimo.ant;
+      ultimo.prox.ant = null;
+      ultimo.prox = null;
+		return resp;
+    }
+
+
+	/**
+    * Remove um peso de uma posicao especifica da lista
+    * considerando que o primeiro peso valido esta na posicao 0.
+	 * @param posicao Meio da remocao.
+    * @return resp int peso a ser removido.
+	 * @throws Exception Se <code>posicao</code> invalida.
+	 */
+	public int remover(int pos) throws Exception {
+      int resp;
+      int tamanho = tamanho();
+
+		if (primeiro == ultimo){
+			throw new Exception("Erro ao remover (vazia)!");
+
+      } else if(pos < 0 || pos >= tamanho){
+			throw new Exception("Erro ao remover (posicao " + pos + " / " + tamanho + " invalida!");
+      } else if (pos == 0){
+         resp = removerInicio();
+      } else if (pos == tamanho - 1){
+         resp = removerFim();
+      } else {
+		   // Caminhar ate a posicao anterior a insercao
+         CelulaList i = primeiro.prox;
+         for(int j = 0; j < pos; j++, i = i.prox);
+		
+         i.ant.prox = i.prox;
+         i.prox.ant = i.ant;
+         resp = i.peso;
+         i.prox = i.ant = null;
+         i = null;
+      }
+
+		return resp;
+	}
+
+
+
+
+	/**
+	 * Mostra os pesos da lista de forma invertida 
+    * e separados por espacos.
+	 */
+	public void mostrarInverso() {
+		System.out.print("[ ");
+		for (CelulaList i = ultimo; i != primeiro; i = i.ant){
+			System.out.print(i.peso + " ");
+      }
+		System.out.println("] "); // Termina de mostrar.
+	}
+
+
+	/**
+	 * Procura um peso e retorna se ele existe.
+	 * @param x peso a pesquisar.
+	 * @return <code>true</code> se o peso existir,
+	 * <code>false</code> em caso contrario.
+	 */
+	public boolean pesquisar(int x) {
+		boolean resp = false;
+		for (CelulaList i = primeiro.prox; i != null; i = i.prox) {
+         if(i.peso == x){
+            resp = true;
+            i = ultimo;
+         }
+		}
+		return resp;
+	}
+
+	/**
+	 * Calcula e retorna o tamanho, em numero de pesos, da lista.
+	 * @return resp int tamanho
+	 */
+   public int tamanho() {
+      int tamanho = 0; 
+      for(CelulaList i = primeiro; i != ultimo; i = i.prox, tamanho++);
+      return tamanho;
+   }
